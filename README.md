@@ -3,8 +3,10 @@ The purpose of this project to build a communication between frontend <> backend
 
 ## Assumptions
 
-1. There will be one client communicating with the backend, so the code does not support multiple clients.
-2. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling, etc. In this case, WebSockets (socket.io) are used.
+1. There will be one client communicating with the backend, so the code does not support multiple clients speaks to the backend.
+2. As different unique auth tokens can be used to define multiple different clients (as mentioned in shared resources in the assessments), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients.
+3. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
+4. I have seen multiple implementation of **GSI** using events, then emit them once we receive the data from game client and then subscribing to values coming from **GSI** that we need, I like the approach as well, we can write business logic based on specific attributes changes clean manner, but I just went with simplicity for now to complete the task, I am passing everything as it is coming from the game client after transforming the response into a better data structure to simplify the logic on the frontend.
 
 The repository contains two folders:
 1. backend
@@ -37,7 +39,7 @@ The **AUTH_TOKEN** should match with the **AUTH TOKEN** of gamestate integration
 
 The backend is verifying the AUTH.TOKEN coming from the game stats object 
 that is getting **POST** to our backend service
-to ensure if the request coming from a valid service.
+to ensure if the request coming from a valid client.
 
 ### Step 3
 
