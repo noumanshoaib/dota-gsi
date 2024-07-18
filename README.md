@@ -117,5 +117,5 @@ Next, you need to create a configuration file that the game client can parse. He
 }
 ```
 
-Now run the game, start watching a tournament, or download an old tournament match and watch replay.
+Now run the game, start watching a tournament, or download an old tournament match and watch replay. :sunglasses:
 
