@@ -1,4 +1,12 @@
 # Game State Integration
+The purpose of this project to build a communication between frontend <> backend <> GSI
+
+There are few assumptions that has been keep in mind while building the project.
+
+1. There will be one client for now that will be communicating with the backend, so the code does not support multiple clients. 
+2. The real time communication can be done using many ways such as websockets, 
+server side events, long polling etc.
+in my case I have went with web sockets (socket.io).
 
 The repository contains two folders 
 - backend
