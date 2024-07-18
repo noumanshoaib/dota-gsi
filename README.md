@@ -1,22 +1,20 @@
 # Game State Integration
 The purpose of this project to build a communication between frontend <> backend <> GSI
 
-There are few assumptions that has been keep in mind while building the project.
+## Assumptions
 
-1. There will be one client for now that will be communicating with the backend, so the code does not support multiple clients. 
-2. The real time communication can be done using many ways such as websockets, 
-server side events, long polling etc.
-in my case I have went with web sockets (socket.io).
+1. There will be one client communicating with the backend, so the code does not support multiple clients.
+2. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling, etc. In this case, WebSockets (socket.io) are used.
 
-The repository contains two folders 
-- backend
-- frontend
+The repository contains two folders:
+1. backend
+2. frontend
 
 ## Backend
 
 The backend is build using **Fastify** a web framework for **NodeJs**
 
-To run the project we need to follow the following steps.
+### Running the backend
 
 ### Step 1
 
@@ -52,15 +50,12 @@ you can access the server at [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 ## Frontend
 
-The frontend is build using **React**.
+The frontend is built using **React**. It represents the picks, bans, current timer, and once the drafts end, it will also show which hero has been picked by which player.
 
-The frontend is representing the picks, bans, current timer and once the drafts end, 
-it will also show which hero has been picked by which player.
-
-To run the project we need to follow the following steps.
+### Running the Frontend
 
 ### Step 1
-Go to the project directory **frontend** folder and run the following command
+Go to the project directory **frontend** folder and run the following command to install node modules
 ```
 npm i
 ```
@@ -74,14 +69,9 @@ REACT_APP_SOCKET_SERVER_URL="http://127.0.0.1:3000"
 PORT=3001
 ```
 
-As my **backend** is running on port 3000, I am running my frontend on 3001 to avoid port conflicts
-we can run it on any port as required.
+As the **backend** is running on port 3000, the frontend is set to run on port 3001 to avoid port conflicts. You can run it on any port as required.
 
-The **REACT_APP_SOCKET_SERVER_URL** is the **socket.io** server URL.
-
-The url for it, is the url of your backend, so if your backend is running on
-
-http://127.0.0.1:3000, this should be the url you should put here.
+The **REACT_APP_SOCKET_SERVER_URL** should be the socket.io server URL, which is the URL of your backend. So, if your backend is running on http://127.0.0.1:3000, this should be the URL you put here.
 
 ## Final Step - Enabling Game State Integration (GSI) for Dota 2
 
