@@ -56,7 +56,7 @@ body {
 .picks_image_container {
   grid-column: span 1 / span 1;
   height: 200px;
-  background-color: red;
+  background-color: green;
 }
 
 .banners_container {
@@ -69,7 +69,7 @@ body {
 .banner_image_container {
   grid-column: span 1 / span 1;
   height: 50px;
-  background-color: red;
+  background-color: green;
 }
 
 .stats_container {

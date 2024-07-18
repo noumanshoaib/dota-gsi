@@ -9,7 +9,7 @@ const socket = socketIO.connect(process.env.REACT_APP_SOCKET_SERVER_URL);
 
 
 const Dashboard = () => {
-  const [data, setData] = useState(mockData);
+  const [data, setData] = useState({});
   const { team2 = {}, team3 ={ }, activeTeamTimeRemaining = 0, pick = false , activeteam = 0 } = data;
   const {bonusTime: radiantBonusTime = 0 } = team2;
   const {bonusTime: direBonusTime = 0 } = team3;
