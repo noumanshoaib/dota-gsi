@@ -6,6 +6,8 @@ async function routes (fastify, options) {
 
     reply.code(200)
 
+    console.log(JSON.stringify(req.body))
+
     const output =  await GSIService.ingestGameStats(fastify, req.body)
 
     return output

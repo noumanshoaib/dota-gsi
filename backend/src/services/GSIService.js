@@ -31,21 +31,17 @@ const transformTeam = (team, heros, players, timer) => {
 };
 
 const ingestGameStats = async (fastify, payload) => {
-
-  const {
-    timer: sec,
-    player: {team2: playerTeam2 },
-    player: {team3: playerTeam3 },
-    hero: {team2: heroTeam2 },
-    hero: {team3: heroTeam3 },
-    draft: {team2: team2},
-    draft: {team3: team3 },
-    draft: {activeteam_time_remaining: activeTeamTimeRemaining},
-    draft: {radiant_bonus_time: radiantBonusTime},
-    draft: {dire_bonus_time: direBonusTime},
-    draft: {pick: pick},
-    draft: {activeteam: activeteam},
-  } = payload
+    const playerTeam2 = payload?.player?.team2 ?? [];
+    const playerTeam3 = payload?.player?.team3 ?? [];
+    const heroTeam2 = payload?.hero?.team2 ?? [];
+    const heroTeam3 = payload?.hero?.team3 ?? [];
+    const team2 = payload?.draft?.team2 ?? [];
+    const team3 = payload?.draft?.team3 ?? [];
+    const activeTeamTimeRemaining = payload?.draft?.activeteam_time_remaining ?? 0;
+    const radiantBonusTime = payload?.draft?.radiant_bonus_time ?? 0;
+    const direBonusTime = payload?.draft?.dire_bonus_time ?? 0;
+    const pick = payload?.draft?.pick ?? false;
+    const activeteam = payload?.draft?.activeteam;
 
   const output = {
       activeteam,
