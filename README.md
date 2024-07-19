@@ -1,5 +1,5 @@
 # Game State Integration
-The purpose of this project to build a communication between frontend <> backend <> GSI
+The purpose of this project to build a communication between frontend <> backend <> GSI for Dota 2 game, to show the drafting in real time of captains mode.
 
 ## Assumptions
 1. There will be one client communicating with the backend, so the backend does not support multiple clients speaks to it for now.
