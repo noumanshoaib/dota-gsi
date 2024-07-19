@@ -45,7 +45,7 @@ const ingestGameStats = async (fastify, payload) => {
     const activeteam = payload?.draft?.activeteam ?? false;
 
   const output = {
-      activeTeam: activeteam !== 0 ? activeteam === 2 ? "dire" : "radiant": 0,
+      activeTeam: activeteam !== 0 ? activeteam === 2 ? "radiant" : "dire": 0,
       pick,
       activeTeamTimeRemaining: secondsToTimer(activeTeamTimeRemaining),
       team2: transformTeam(team2, heroTeam2, playerTeam2, radiantBonusTime, "radiant"),

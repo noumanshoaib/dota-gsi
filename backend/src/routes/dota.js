@@ -3,6 +3,8 @@ const GSIService = require('../services/GSIService')
 
 async function routes (fastify, options) {
   fastify.post('/dota2-gsi', {preValidation: fastify.authenticate} ,async (req, reply) => {
+    console.log(JSON.stringify(req.body?.previously?.draft?.activeteam_time_remaining))
+    console.log(JSON.stringify(req.body.draft.activeteam_time_remaining))
     const output =  await GSIService.ingestGameStats(fastify, req.body)
     return output
   })
