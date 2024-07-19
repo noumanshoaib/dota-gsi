@@ -3,8 +3,7 @@ The purpose of this project to build a communication between frontend <> backend
 
 ## Assumptions
 1. There will be one client communicating with the backend, so the backend does not support multiple clients speaks to it for now.
-2. All the three systems have smooth connection with each other backend <> GSI <> frontend
-3. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
+2. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
 ## Notes
 1. The project only works with the drafting of captains mode in dota 2.
 2. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
@@ -89,36 +88,38 @@ Enabling GSI is a two-step process. First, instruct the game client to enable GS
 Next, you need to create a configuration file that the game client can parse. Here’s how to do it:
 
 1. Navigate to your Dota 2 directory for example: `YOUR_STEAM_DIRECTORY\steamapps\common\dota 2 beta\game\dota\cfg\gamestate_integration\.`
-2. Create a file with a name starting with `gamestate_integration_` and ending with `.cfg`. For example, `gamestate_integration_my_service.cfg`.
+2. Create a file with a name starting with `gamestate_integration_` and ending with `.cfg`. For example, `gamestate_integration_my_service.cfg` and place the below content into it to receive the data for drafting.
 
 ```
-"Configuration description"
+"dota2-gsi Configuration"
 {
-// Comments can be used
-   "uri"               "http://localhost:3002/"
-   "timeout"           "5.0"
-   "buffer"            "0.1"
-   "throttle"          "0.1"
-   "heartbeat"         "30.0"
-   "data"
-   {
-       "buildings"     "0"
-       "provider"      "0" // disabled
-       "map"           "0"
-       "player"        "1" // enabled
-       "hero"          "1"
-       "abilities"     "0"
-       "items"         "1"
-       "draft"         "0"
-       "wearables"     "0"
-   }
-   "auth"
-   {
-       "token"         "super_secret"
-   }
+    "uri"               "http://127.0.0.1:3000/dota2-gsi"
+    "timeout"           "5.0"
+    "buffer"            "0.1"
+    "throttle"          "0.1"
+    "heartbeat"         "30.0"
+    "data"
+    {
+        "buildings"     "0"
+        "provider"      "0"
+        "map"           "0"
+        "player"        "1"
+        "hero"          "1"
+        "abilities"     "0"
+        "items"         "0"
+        "draft"         "1"
+        "wearables"     "0"
+    }
+    "auth"
+    {
+        "token"         "NoumanTest"
+    }
 }
+
 ```
 
-Now run the game, start watching a tournament, or download an old tournament match and watch replay.
+**Note: `http://127.0.0.1:3000` is the base url of your backend and `/dota2-gsi` is the route url where backend is expecting to receive the game stats** 
+
+Now run the game, start watching a tournament which is captains mode, or download an old tournament match and watch replay.
 and check the frontend application for draft updates. :innocent:
 
