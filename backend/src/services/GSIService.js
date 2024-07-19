@@ -42,7 +42,7 @@ const ingestGameStats = async (fastify, payload) => {
     const radiantBonusTime = payload?.draft?.radiant_bonus_time ?? 0;
     const direBonusTime = payload?.draft?.dire_bonus_time ?? 0;
     const pick = payload?.draft?.pick ?? false;
-    const activeteam = payload?.draft?.activeteam ?? false;
+    const activeteam = payload?.draft?.activeteam ?? 0;
 
   const output = {
       activeTeam: activeteam !== 0 ? activeteam === 2 ? "radiant" : "dire": 0,
