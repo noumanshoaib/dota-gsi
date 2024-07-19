@@ -3,7 +3,8 @@ The purpose of this project to build a communication between frontend <> backend
 
 ## Assumptions
 1. There will be one client communicating with the backend, so the backend does not support multiple clients speaks to it for now.
-2. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
+2. All the three systems have smooth connection with each other backend <> GSI <> frontend
+3. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
 ## Notes
 1. The project only works with the drafting of captains mode in dota 2.
 2. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
