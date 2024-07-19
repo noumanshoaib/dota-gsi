@@ -41,7 +41,7 @@ AUTH_TOKEN=NoumanTest
 PORT=3000
 ```
 
-The **AUTH_TOKEN** should match with the **AUTH TOKEN** of gamestate integration file
+The **AUTH_TOKEN** should match with the **AUTH TOKEN** of game state integration configuration file
 
 The backend is verifying the `AUTH.TOKEN` coming from the game stats object 
 that is getting **POST** to our backend service
@@ -119,10 +119,9 @@ Next, you need to create a configuration file that the game client can parse. He
 
 ```
 
-I have enabled only draft, player and hero, to show picks, bans and timer, only draft was enough, to add which hero picked by the player, I enabled hero and player data as well.
+In the above configuration, I have enabled only draft, player, and hero to show picks, bans, and the timer. For picks and bans, enabling only draft was enough. However, to display which hero was picked by each player, I also enabled hero and player data.
 
 **Note: `http://127.0.0.1:3000` is the base url of your backend and `/dota2-gsi` is the route url where backend is expecting to receive the game stats** 
 
-Now run the game, start watching a tournament which is captains mode, or download an old tournament match and watch replay.
-and check the frontend application for draft updates. :innocent:
+Now run the game, start watching a tournament in captains mode, or download an old tournament match and watch the replay. Check the frontend application for draft updates. 😊
 
