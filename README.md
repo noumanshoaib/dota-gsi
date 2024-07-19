@@ -121,7 +121,7 @@ Next, you need to create a configuration file that the game client can parse. He
 
 In the above configuration, I have enabled only draft, player, and hero to show picks, bans, and the timer. For picks and bans, enabling only draft was enough. However, to display which hero was picked by each player, I also enabled hero and player data.
 
-I have kept buffer to `0.0` to avoid any event delays, but for remote services it is recommended to use 0.1 or as required for having a bigger delta.
+I have kept buffer to `0.0` as I am running it on localhost, but can be tuned according to the requirement and setup.
 
 **Note: `http://127.0.0.1:3000` is the base url of your backend and `/dota2-gsi` is the route url where backend is expecting to receive the game stats** 
 
