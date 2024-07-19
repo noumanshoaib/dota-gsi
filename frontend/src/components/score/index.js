@@ -2,8 +2,6 @@ const Score = ( { data = {} }) => {
   const {
     direBonusTime,
     radiantBonusTime,
-    activeteam,
-    pick,
     activeTeamTimeRemaining
   } = data;
   return (
