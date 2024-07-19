@@ -9,18 +9,21 @@ const socket = socketIO.connect(process.env.REACT_APP_SOCKET_SERVER_URL);
 
 
 const Dashboard = () => {
-  const [data, setData] = useState({});
-  const { team2 = {}, team3 ={ }, activeTeamTimeRemaining = 0, pick = false , activeteam = 0 } = data;
+  const [data, setData] = useState(mockData);
+  const { team2 = {}, team3 ={ }, activeTeamTimeRemaining = 0, pick = false , activeTeam = 0 } = data;
   const {bonusTime: radiantBonusTime = 0 } = team2;
   const {bonusTime: direBonusTime = 0 } = team3;
 
-  const scoreTimerObject = {
+  const scoreTimer = {
     direBonusTime,
     radiantBonusTime,
-    activeteam,
-    pick,
     activeTeamTimeRemaining
   };
+
+  const teamPickOrBan = {
+    activeTeam,
+    pick,
+  }
 
   //Listens for update draft event
   useEffect(() => {
@@ -35,9 +38,9 @@ const Dashboard = () => {
   return (
     <div className="app_container">
       <div className="dashboard">
-        <Team data={team2} />
-        <Score data={scoreTimerObject} />
-        <Team data={team3} />
+        <Team data={team2} teamPickOrBan={teamPickOrBan}/>
+        <Score data={scoreTimer} />
+        <Team data={team3} teamPickOrBan={teamPickOrBan} />
       </div>
     </div>
   );

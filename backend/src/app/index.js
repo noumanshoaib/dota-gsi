@@ -7,12 +7,6 @@ const env = require('./env')
 async function build (opts = {}) {
   const app = fastify(opts)
 
-  // CORS
-  app.register(require('@fastify/cors'), {})
-
-  // Compression
-  app.register(require('@fastify/compress'))
-
   // Plugin Registration
   // Set up the environment variables
   app.register(fastifyEnv, env.options)
@@ -31,7 +25,7 @@ async function build (opts = {}) {
   //registering socket io
   app.register(require("../plugins/fastifySocketIo"), {
     cors: {
-      origin: "*", // Replace with your allowed origin(s)
+      origin: "*", // Replace with your allowed origin(s) for testing I have allowed all
       methods: ["GET", "POST"]
     }
   });

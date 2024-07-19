@@ -1,27 +1,32 @@
 # Game State Integration
-The purpose of this project to build a communication between frontend <> backend <> GSI for Dota 2 game, to show the drafting in real time of captains mode.
+The purpose of this project is to establish communication between the frontend, backend, and Game State Integration (GSI) for the Dota 2 game. This will enable the real-time display of the drafting process in Captains Mode. The system aims to:
+
+1. **Frontend-Backend Communication**: Develop a user interface that interacts with the backend server to provide real-time updates.
+
+2. **Backend-GSI Integration**: Implement backend (**Fastify** a web framework of **NodeJs**) service that interface with Dota 2's GSI, ensuring timely data retrieval from the game.
+
+3. **Real-Time Drafting Display**: Create a dynamic frontend (**React**) component to visualize the drafting phase of Captains Mode, reflecting the picks and bans as they occur in real-time.
 
 ## Assumptions
-1. There will be one client communicating with the backend, so the backend does not support multiple clients speaks to it for now.
+1. There will be one client communicating with the backend, so the backend does not support multiple clients communication.
 2. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
 ## Notes
-1. The project only works with the drafting of captains mode in dota 2.
-2. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
-3. I have seen multiple implementation of **GSI** using events (event driven) which is more modular and scalable approach, where we emit data when we receive it from the game client which enable us to subscribe to certain data attributes coming from **GSI** based on our needs, I like the approach as well, as it makes the code more modular, scalable, maintainable and reusable, and we can write business logic based on specific attributes changes in clean manner, but I just implement a simplified approach to complete the task, by assuming it a small and simple application for the assessment, I am passing everything as it is coming from the game client after transforming the response into a better data structure, so it is simpler for the frontend to understand.
+1. The frontend displays both Dire and Radiant bonus times, as well as the active time for each pick and ban. At the end of the draft, it shows the player names below each picked hero card, indicating who picked that hero.
+2. The project only works with the drafting of captains mode in dota 2.
+3. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
+4. I have seen multiple implementation of **GSI** using events (event driven) which is more modular and scalable approach, where we emit data when we receive it from the game client which enable us to subscribe to certain data attributes coming from **GSI** based on our needs, I like the approach as well, as it makes the code more modular, scalable, maintainable and reusable, and we can write business logic based on specific attributes changes in clean manner, but I just implement a simplified approach to complete the task, by assuming it a small and simple application for the assessment, I am passing everything as it is coming from the game client after transforming the response into a better data structure, so it is simpler for the frontend to understand.
 
 The repository contains two folders:
 1. backend
 2. frontend
 
-## Backend
-
-The backend is build using **Fastify** a web framework for **NodeJs**
+## Setting up the projects
 
 ### Running the backend
 
 ### Step 1
 
-Go to the project directory inside **backend** folder and run the following command
+Go to the project directory inside **backend** folder and run the following command.
 
 ```
 //installing the node modules
@@ -29,7 +34,7 @@ npm i
 ```
 ### Step 2
 
-Rename .env.example to .env, it contains the below env variables
+Rename `.env.example` to `.env`, it contains the below environment variables
 
 ```
 AUTH_TOKEN=NoumanTest
@@ -38,7 +43,7 @@ PORT=3000
 
 The **AUTH_TOKEN** should match with the **AUTH TOKEN** of gamestate integration file
 
-The backend is verifying the AUTH.TOKEN coming from the game stats object 
+The backend is verifying the `AUTH.TOKEN` coming from the game stats object 
 that is getting **POST** to our backend service
 to ensure if the request coming from a valid client.
 
@@ -51,14 +56,10 @@ npm start
 
 you can access the server at [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
-## Frontend
-
-The frontend is built using **React**. It represents the picks, bans, current timer, and once the drafts end, it will also show which hero has been picked by which player.
-
 ### Running the Frontend
 
 ### Step 1
-Go to the project directory **frontend** folder and run the following command to install node modules
+Go to the project directory **frontend** folder and run the following command to install node modules.
 ```
 npm i
 ```
@@ -72,16 +73,16 @@ REACT_APP_SOCKET_SERVER_URL="http://127.0.0.1:3000"
 PORT=3001
 ```
 
-As the **backend** is running on port 3000, the frontend is set to run on port 3001 to avoid port conflicts. You can run it on any port as required.
+As the **backend** is running on port `3000`, the frontend is set to run on port `3001` to avoid port conflicts. You can run it on any port as required.
 
-The **REACT_APP_SOCKET_SERVER_URL** should be the socket.io server URL, which is the URL of your backend. So, if your backend is running on http://127.0.0.1:3000, this should be the URL you put here.
+The **REACT_APP_SOCKET_SERVER_URL** should be the socket.io server URL, which is the URL of your backend. So, if your backend is running on `http://127.0.0.1:3000`, this should be the URL you put here.
 
 ## Final Step - Enabling Game State Integration (GSI) for Dota 2
 
 Enabling GSI is a two-step process. First, instruct the game client to enable GSI by following these steps:
 
-1. Open Steam and navigate to your library.
-2. Right-click on Dota 2 and select `Properties`.
+1. Open Steam and navigate to your `library`.
+2. Right-click on `Dota 2` and select `Properties`.
 3. Click on the `General` tab.
 4. In the `Launch Options` field, enter `-gamestateintegration`.
 
@@ -117,6 +118,8 @@ Next, you need to create a configuration file that the game client can parse. He
 }
 
 ```
+
+I have enabled only draft, player and hero, to show picks, bans and timer, only draft was enough, to add which hero picked by the player, I enabled hero and player data as well.
 
 **Note: `http://127.0.0.1:3000` is the base url of your backend and `/dota2-gsi` is the route url where backend is expecting to receive the game stats** 
 

@@ -2,13 +2,14 @@
 
 const { secondsToTimer } = require("../util/dateTimeHelper")
 
-const transformTeam = (team, heros, players, timer) => {
+const transformTeam = (team, heros, players, timer, teamName) => {
   return {
+    teamName,
     bonusTime: secondsToTimer(timer),
-    home_team: team.home_team,
+    homeTeam: team.home_team ?? false,
     picks: Array.from({ length: 5 }, (_, i) => ({
-      id: team[`pick${i}_id`],
-      class: team[`pick${i}_class`],
+      id: team[`pick${i}_id`] ?? 0,
+      class: team[`pick${i}_class`] ?? "",
       image: team[`pick${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`pick${i}_class`]}_full.png`: '',
       pickedBy: Object.entries(players).reduce((acc, [id]) => {
               if(team[`pick${i}_id`] == heros[id]['id'] && team[`pick${i}_id`] !== 0) {
@@ -23,8 +24,8 @@ const transformTeam = (team, heros, players, timer) => {
       , {})
     })),
     bans: Array.from({ length: 7 }, (_, i) => ({
-      id: team[`ban${i}_id`],
-      class: team[`ban${i}_class`],
+      id: team[`ban${i}_id`] ?? 0,
+      class: team[`ban${i}_class`] ?? "",
       image: team[`ban${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`ban${i}_class`]}_full.png`: '',
     }))
   };
@@ -41,14 +42,14 @@ const ingestGameStats = async (fastify, payload) => {
     const radiantBonusTime = payload?.draft?.radiant_bonus_time ?? 0;
     const direBonusTime = payload?.draft?.dire_bonus_time ?? 0;
     const pick = payload?.draft?.pick ?? false;
-    const activeteam = payload?.draft?.activeteam;
+    const activeteam = payload?.draft?.activeteam ?? false;
 
   const output = {
-      activeteam,
+      activeTeam: activeteam !== 0 ? activeteam === 2 ? "dire" : "radiant": 0,
       pick,
       activeTeamTimeRemaining: secondsToTimer(activeTeamTimeRemaining),
-      team2: transformTeam(team2, heroTeam2, playerTeam2, radiantBonusTime),
-      team3: transformTeam(team3, heroTeam3, playerTeam3, direBonusTime)
+      team2: transformTeam(team2, heroTeam2, playerTeam2, radiantBonusTime, "radiant"),
+      team3: transformTeam(team3, heroTeam3, playerTeam3, direBonusTime, "dire")
     };
 
   fastify.io.emit("draft-update", output)

@@ -1,56 +1,41 @@
 const mockData = {
-  "activeteam": 0,
-  "pick": false,
-  "activeTeamTimeRemaining": "0:00",
+  "activeTeam": "dire",
+  "pick": true,
+  "activeTeamTimeRemaining": "0:21",
   "team2": {
-    "bonusTime": "0:00",
-    "home_team": false,
+    "teamName": "radiant",
+    "bonusTime": "1:36",
+    "homeTeam": false,
     "picks": [
       {
         "id": 88,
         "class": "nyx_assassin",
         "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/nyx_assassin_full.png",
-        "pickedBy": {
-          "playerId": "player1",
-          "name": "Ari",
-          "teamName": "radiant"
-        }
-      },
-      {
-        "id": 110,
-        "class": "phoenix",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/phoenix_full.png",
-        "pickedBy": {
-          "playerId": "player3",
-          "name": "Ceb",
-          "teamName": "radiant"
-        }
-      },
-      {
-        "id": 120,
-        "class": "pangolier",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png",
         "pickedBy": {}
       },
       {
-        "id": 69,
-        "class": "doom_bringer",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/doom_bringer_full.png",
-        "pickedBy": {
-          "playerId": "player0",
-          "name": "Wisper",
-          "teamName": "radiant"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       },
       {
-        "id": 63,
-        "class": "weaver",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/weaver_full.png",
-        "pickedBy": {
-          "playerId": "player4",
-          "name": "Timado",
-          "teamName": "radiant"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
+      },
+      {
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
+      },
+      {
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       }
     ],
     "bans": [
@@ -75,75 +60,56 @@ const mockData = {
         "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/mars_full.png"
       },
       {
-        "id": 33,
-        "class": "enigma",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enigma_full.png"
+        "id": 0,
+        "class": "",
+        "image": ""
       },
       {
-        "id": 55,
-        "class": "dark_seer",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/dark_seer_full.png"
+        "id": 0,
+        "class": "",
+        "image": ""
       },
       {
-        "id": 96,
-        "class": "centaur",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/centaur_full.png"
+        "id": 0,
+        "class": "",
+        "image": ""
       }
     ]
   },
   "team3": {
-    "bonusTime": "0:00",
+    "teamName": "dire",
+    "bonusTime": "1:40",
     "home_team": true,
     "picks": [
       {
         "id": 16,
         "class": "sand_king",
         "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/sand_king_full.png",
-        "pickedBy": {
-          "playerId": "player9",
-          "name": "Topson",
-          "teamName": "dire"
-        }
+        "pickedBy": {}
       },
       {
-        "id": 64,
-        "class": "jakiro",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/jakiro_full.png",
-        "pickedBy": {
-          "playerId": "player7",
-          "name": "Whitemon",
-          "teamName": "dire"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       },
       {
-        "id": 136,
-        "class": "marci",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/marci_full.png",
-        "pickedBy": {
-          "playerId": "player8",
-          "name": "9Class",
-          "teamName": "dire"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       },
       {
-        "id": 61,
-        "class": "broodmother",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/broodmother_full.png",
-        "pickedBy": {
-          "playerId": "player5",
-          "name": "Pure",
-          "teamName": "dire"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       },
       {
-        "id": 38,
-        "class": "beastmaster",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/beastmaster_full.png",
-        "pickedBy": {
-          "playerId": "player6",
-          "name": "RAMZES666",
-          "teamName": "dire"
-        }
+        "id": 0,
+        "class": "",
+        "image": "",
+        "pickedBy": {}
       }
     ],
     "bans": [
@@ -173,14 +139,14 @@ const mockData = {
         "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/ember_spirit_full.png"
       },
       {
-        "id": 41,
-        "class": "faceless_void",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/faceless_void_full.png"
+        "id": 0,
+        "class": "",
+        "image": ""
       },
       {
-        "id": 95,
-        "class": "troll_warlord",
-        "image": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/troll_warlord_full.png"
+        "id": 0,
+        "class": "",
+        "image": ""
       }
     ]
   }
