@@ -3,13 +3,12 @@ import Team from "../team";
 import Score from "../score";
 
 import socketIO from 'socket.io-client';
-import mockData from "../../mocks";
 
 const socket = socketIO.connect(process.env.REACT_APP_SOCKET_SERVER_URL);
 
 
 const Dashboard = () => {
-  const [data, setData] = useState(mockData);
+  const [data, setData] = useState({});
   const { team2 = {}, team3 ={ }, activeTeamTimeRemaining = 0, pick = false , activeTeam = 0 } = data;
   const {bonusTime: radiantBonusTime = 0 } = team2;
   const {bonusTime: direBonusTime = 0 } = team3;
