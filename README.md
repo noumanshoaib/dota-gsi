@@ -8,7 +8,7 @@ The purpose of this project is to establish communication between the frontend, 
 3. **Real-Time Drafting Display**: Create a dynamic frontend (**React**) component to visualize the drafting phase of Captains Mode, reflecting the picks and bans as they occur in real-time.
 
 ## Assumptions
-1. There will be one client communicating with the backend, so the backend does not support multiple client communication. But, real world scenario, multiple game clients can speak with the backend service, which is mandatory to build some certain features.
+1. There will be one client communicating with the backend, so the backend does not manage multiple client communication. But, in real world scenario, multiple game clients can speak with the backend service, which is mandatory to build some certain features.
 2. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
 ## Notes
 1. The frontend displays both Dire and Radiant bonus times, as well as the active time for each pick and ban. At the end of the draft, it shows the player names below each picked hero card, indicating who picked that hero.
