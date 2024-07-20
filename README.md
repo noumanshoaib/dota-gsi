@@ -22,12 +22,13 @@ The repository contains two folders:
 
 ## Setting up the projects
 
+Clone the project into your local.
 
 ### Running using docker
 
 The project has been shipped with docker-compose.yml file, which can run the both services backend and frontend in one command.
 
-To set up the both projects
+To set up the both project,  In the main directory run the below.
 
 ```
 docker-compose up
