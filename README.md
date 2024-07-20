@@ -24,7 +24,7 @@ The repository contains two folders:
 
 Clone the project into your local.
 
-### Running using docker
+### 1) Running using docker
 
 The project has been shipped with docker-compose.yml file, which can run the both services backend and frontend in one command.
 
@@ -38,7 +38,7 @@ The backend will be running on [http://127.0.0.1:3000](http://127.0.0.1:3000) an
 
 You can skip to the final step - **Enabling Game State Integration (GSI) for Dota 2**
 
-### Running the backend (Manually)
+### 2.1) Running the backend (Manually)
 
 ### Step 1
 
@@ -72,7 +72,7 @@ npm start
 
 you can access the server at [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
-### Running the Frontend
+### 2.2) Running the Frontend
 
 ### Step 1
 Go to the project directory **frontend** folder and run the following command to install node modules.
