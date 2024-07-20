@@ -2,7 +2,32 @@
 
 const { secondsToTimer } = require("../util/dateTimeHelper")
 
-const transformTeam = (team, heros, players, timer, teamName) => {
+
+const transformOutput = async (payload) => {
+    const teamTwoPlayer = payload?.player?.team2 ?? [];
+    const teamThreePlayer = payload?.player?.team3 ?? [];
+    const teamTwoHero = payload?.hero?.team2 ?? [];
+    const teamThreeHero = payload?.hero?.team3 ?? [];
+    const teamTwo = payload?.draft?.team2 ?? [];
+    const teamThree = payload?.draft?.team3 ?? [];
+    const activeTeamTimeRemaining = payload?.draft?.activeteam_time_remaining ?? 0;
+    const radiantBonusTime = payload?.draft?.radiant_bonus_time ?? 0;
+    const direBonusTime = payload?.draft?.dire_bonus_time ?? 0;
+    const pick = payload?.draft?.pick ?? false;
+    const activeteam = payload?.draft?.activeteam ?? 0;
+
+    const output = {
+        activeTeam: activeteam !== 0 ? activeteam === 2 ? "radiant" : "dire": 0,
+        pick,
+        activeTeamTimeRemaining: secondsToTimer(activeTeamTimeRemaining),
+        team2: await transformTeam(teamTwo, teamTwoHero, teamTwoPlayer, radiantBonusTime, "radiant"),
+        team3: await transformTeam(teamThree, teamThreeHero, teamThreePlayer, direBonusTime, "dire")
+    };
+
+    return output;
+}
+
+const transformTeam = async (team, heros, players, timer, teamName) => {
   return {
     teamName,
     bonusTime: secondsToTimer(timer),
@@ -32,25 +57,8 @@ const transformTeam = (team, heros, players, timer, teamName) => {
 };
 
 const ingestGameStats = async (fastify, payload) => {
-    const playerTeam2 = payload?.player?.team2 ?? [];
-    const playerTeam3 = payload?.player?.team3 ?? [];
-    const heroTeam2 = payload?.hero?.team2 ?? [];
-    const heroTeam3 = payload?.hero?.team3 ?? [];
-    const team2 = payload?.draft?.team2 ?? [];
-    const team3 = payload?.draft?.team3 ?? [];
-    const activeTeamTimeRemaining = payload?.draft?.activeteam_time_remaining ?? 0;
-    const radiantBonusTime = payload?.draft?.radiant_bonus_time ?? 0;
-    const direBonusTime = payload?.draft?.dire_bonus_time ?? 0;
-    const pick = payload?.draft?.pick ?? false;
-    const activeteam = payload?.draft?.activeteam ?? 0;
 
-  const output = {
-      activeTeam: activeteam !== 0 ? activeteam === 2 ? "radiant" : "dire": 0,
-      pick,
-      activeTeamTimeRemaining: secondsToTimer(activeTeamTimeRemaining),
-      team2: transformTeam(team2, heroTeam2, playerTeam2, radiantBonusTime, "radiant"),
-      team3: transformTeam(team3, heroTeam3, playerTeam3, direBonusTime, "dire")
-    };
+  const output = await transformOutput(payload)
 
   fastify.io.emit("draft-update", output)
 
