@@ -24,7 +24,7 @@ The repository contains two folders:
 
 Clone the project into your local.
 
-### 1) Running using docker
+### 1) Running using docker (Recommended)
 
 The project has been shipped with docker-compose.yml file, which can run the both services backend and frontend in one command.
 
@@ -150,4 +150,4 @@ I have kept buffer to `0.0` as I am running it on localhost, but can be tuned ac
 
 Now run the game, start watching a tournament in captains mode, or download an old tournament match and watch the replay. Check the frontend application for draft updates. 😊
 
-[Dota 2 GSI Draft Demo Video](https://jumpshare.com/v/eCtUlCYzjB63WWT73K6w)
+[Dota 2 GSI Draft Demo Video](https://jumpshare.com/v/eCtUlCYzjB63WWT73K6w)  (I have attached a demo video for your kind reference)
