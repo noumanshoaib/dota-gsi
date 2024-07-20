@@ -142,3 +142,4 @@ I have kept buffer to `0.0` as I am running it on localhost, but can be tuned ac
 
 Now run the game, start watching a tournament in captains mode, or download an old tournament match and watch the replay. Check the frontend application for draft updates. 😊
 
+https://jumpshare.com/s/zRa3EZYa0dBwZgDV5xPb
