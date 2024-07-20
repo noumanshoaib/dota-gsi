@@ -13,7 +13,7 @@ The purpose of this project is to establish communication between the frontend, 
 ## Notes
 1. The frontend displays both Dire and Radiant bonus times, as well as the active time for each pick and ban. At the end of the draft, it shows the player names below each picked hero card, indicating who picked that hero.
 2. The project only works with the drafting of captains mode in dota 2.
-3. Real-time communication can be achieved using various methods. In this case, WebSockets (socket.io) are used.
+3. Real-time communication can be achieved using various methods. In this case, WebSockets (socket.io) is used.
 4. I have seen multiple implementation of **GSI** using events (event driven) which is more modular and scalable approach, where we emit data when we receive it from multiple game client which enable us to subscribe to certain data attributes coming from **GSI** based on our needs, I like the approach as well, as it makes the code more modular, scalable, maintainable and reusable, and we can write business logic based on specific attributes changes in clean manner, but I just implement a simplified approach to complete the task, by assuming it a small and simple application for the assessment, I am passing everything as it is coming from the game client after transforming the response into a better data structure, so it is simpler for the frontend to understand.
 
 The repository contains two folders:
