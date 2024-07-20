@@ -27,32 +27,40 @@ const transformOutput = async (payload) => {
     return output;
 }
 
+const transformPick = async (team, players, heros) => {
+    return Array.from({ length: 5 }, (_, i) => ({
+        id: team[`pick${i}_id`] ?? 0,
+        class: team[`pick${i}_class`] ?? "",
+        image: team[`pick${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`pick${i}_class`]}_full.png`: '',
+        pickedBy: Object.entries(players).reduce((acc, [id]) => {
+                if(team[`pick${i}_id`] == heros[id]['id'] && team[`pick${i}_id`] !== 0) {
+                    acc = {
+                        playerId: id,
+                        name: players[id]['name'],
+                        teamName: players[id]['team_name'],
+                    }
+                }
+                return acc
+            }
+            , {})
+    }))
+}
+
+const transformBan = async (team) => {
+    return Array.from({ length: 7 }, (_, i) => ({
+        id: team[`ban${i}_id`] ?? 0,
+        class: team[`ban${i}_class`] ?? "",
+        image: team[`ban${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`ban${i}_class`]}_full.png`: '',
+    }))
+}
+
 const transformTeam = async (team, heros, players, timer, teamName) => {
   return {
     teamName,
     bonusTime: secondsToTimer(timer),
     homeTeam: team.home_team ?? false,
-    picks: Array.from({ length: 5 }, (_, i) => ({
-      id: team[`pick${i}_id`] ?? 0,
-      class: team[`pick${i}_class`] ?? "",
-      image: team[`pick${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`pick${i}_class`]}_full.png`: '',
-      pickedBy: Object.entries(players).reduce((acc, [id]) => {
-              if(team[`pick${i}_id`] == heros[id]['id'] && team[`pick${i}_id`] !== 0) {
-                acc = {
-                    playerId: id,
-                    name: players[id]['name'],
-                    teamName: players[id]['team_name'],
-                  }
-              }
-              return acc
-        }
-      , {})
-    })),
-    bans: Array.from({ length: 7 }, (_, i) => ({
-      id: team[`ban${i}_id`] ?? 0,
-      class: team[`ban${i}_class`] ?? "",
-      image: team[`ban${i}_class`] ? `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/${team[`ban${i}_class`]}_full.png`: '',
-    }))
+    picks: await transformPick(team, players, heros),
+    bans: await transformBan(team)
   };
 };
 
