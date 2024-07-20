@@ -81,7 +81,7 @@ npm i
 
 ### Step 2
 
-Rename the .env.example to .env and the below variables
+Rename the `.env.example` to `.env` and the below variables
 
 ```
 REACT_APP_SOCKET_SERVER_URL="http://127.0.0.1:3000"
