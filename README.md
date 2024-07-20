@@ -8,13 +8,13 @@ The purpose of this project is to establish communication between the frontend, 
 3. **Real-Time Drafting Display**: Create a dynamic frontend (**React**) component to visualize the drafting phase of Captains Mode, reflecting the picks and bans as they occur in real-time.
 
 ## Assumptions
-1. There will be one client communicating with the backend, so the backend does not support multiple clients communication.
+1. There will be one client communicating with the backend, so the backend does not support multiple client communication. But, I know in real world, multiple game clients can speak with the backend service, which is mandatory to build some certain features.
 2. As different unique auth tokens can also be used to define multiple different clients for identification (as I read in one of the shared resources in the assessment), in my case, I am just considering one client, also I am validating requests coming to the server if they match the auth token from the client. Just to show a good practise to allow only valid clients. (it can be unnecessary depending on different scenarios)
 ## Notes
 1. The frontend displays both Dire and Radiant bonus times, as well as the active time for each pick and ban. At the end of the draft, it shows the player names below each picked hero card, indicating who picked that hero.
 2. The project only works with the drafting of captains mode in dota 2.
-3. Real-time communication can be achieved using various methods such as WebSockets, Server-Side Events, Long Polling etc. In this case, WebSockets (socket.io) are used.
-4. I have seen multiple implementation of **GSI** using events (event driven) which is more modular and scalable approach, where we emit data when we receive it from the game client which enable us to subscribe to certain data attributes coming from **GSI** based on our needs, I like the approach as well, as it makes the code more modular, scalable, maintainable and reusable, and we can write business logic based on specific attributes changes in clean manner, but I just implement a simplified approach to complete the task, by assuming it a small and simple application for the assessment, I am passing everything as it is coming from the game client after transforming the response into a better data structure, so it is simpler for the frontend to understand.
+3. Real-time communication can be achieved using various methods. In this case, WebSockets (socket.io) are used.
+4. I have seen multiple implementation of **GSI** using events (event driven) which is more modular and scalable approach, where we emit data when we receive it from multiple game client which enable us to subscribe to certain data attributes coming from **GSI** based on our needs, I like the approach as well, as it makes the code more modular, scalable, maintainable and reusable, and we can write business logic based on specific attributes changes in clean manner, but I just implement a simplified approach to complete the task, by assuming it a small and simple application for the assessment, I am passing everything as it is coming from the game client after transforming the response into a better data structure, so it is simpler for the frontend to understand.
 
 The repository contains two folders:
 1. backend
