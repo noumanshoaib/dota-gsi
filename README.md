@@ -22,7 +22,22 @@ The repository contains two folders:
 
 ## Setting up the projects
 
-### Running the backend
+
+### Running using docker
+
+The project has been shipped with docker-compose.yml file, which can run the both services backend and frontend in one command.
+
+To set up the both projects
+
+```
+docker-compose up
+```
+
+The backend will be running on [http://127.0.0.1:3000](http://127.0.0.1:3000) and frontend will be running on [http://127.0.0.1:3001](http://127.0.0.1:3001)
+
+You can skip to the final step - **Enabling Game State Integration (GSI) for Dota 2**
+
+### Running the backend (Manually)
 
 ### Step 1
 
@@ -66,7 +81,7 @@ npm i
 
 ### Step 2
 
-Update the .env.local if required
+Rename the .env.example to .env and the below variables
 
 ```
 REACT_APP_SOCKET_SERVER_URL="http://127.0.0.1:3000"
@@ -75,7 +90,7 @@ PORT=3001
 
 As the **backend** is running on port `3000`, the frontend is set to run on port `3001` to avoid port conflicts. You can run it on any port as required.
 
-The **REACT_APP_SOCKET_SERVER_URL** should be the socket.io server URL, which is the URL of your backend. So, if your backend is running on `http://127.0.0.1:3000`, this should be the URL you put here.
+The **REACT_APP_SOCKET_SERVER_URL** should be the socket.io server URL, which is the URL of our backend. So, if the backend is running on `http://127.0.0.1:3000`, this should be the URL we have to put here.
 
 ## Final Step - Enabling Game State Integration (GSI) for Dota 2
 
